@@ -1,5 +1,16 @@
 import Parser from '@postlight/parser';
 import fs from 'fs';
+import path from 'path';
+
+// Remove all files in articles folder
+fs.readdir('articles', (err, files) => {
+    if (err) throw err;
+    for (const file of files) {
+        fs.unlink(path.join('articles', file), err => {
+            if (err) throw err;
+        });
+    }
+});
 
 // Get urls from file ril_export.html
 const urlFile = fs.readFileSync('ril_export.html', 'utf8').split('\n');
