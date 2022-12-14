@@ -27,3 +27,13 @@ npm install
 ```bash
 npm start
 ```
+
+5. Your articles will be exported to `articles` folder.
+
+## Single article export
+
+If you want to export a single article, you can use the `singleWeb.js`. Example:
+
+```bash
+node singleWeb.js https://mufidu.com/ansosmed/
+```
