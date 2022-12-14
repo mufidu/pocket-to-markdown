@@ -11,11 +11,9 @@ urlFile.forEach(line => {
     // Check if line contains URL
     if (line.includes('href="')) {
         const url = line.match(/href="([^"]*)"/)[1];
-        console.log(url);
         // Check if line contains tags
         if (line.includes('tags="')) {
             const tags = line.match(/tags="([^"]*)"/)[1];
-            console.log(tags);
             // Split tags into array
             urls[url] = tags.split(',');
         } else {
