@@ -73,7 +73,11 @@ Parser.parse(url, { contentType: 'markdown' }).then(result => {
     console.log(result.title + ' parsed!');
     
 }).catch(error => {
-    // Append to failed.txt
-    fs.appendFileSync('failed.txt', url + '\n');
+    // Check if singleFailed.txt exists, if not create it
+    if (!fs.existsSync('singleFailed.txt')) {
+        fs.writeFileSync('singleFailed.txt', '');
+    }
+    // Append to singleFailed.txt
+    fs.appendFileSync('singleFailed.txt', url + '\n');
     console.log(error);
 });
