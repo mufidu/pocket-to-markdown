@@ -28,8 +28,18 @@ npm install
 npm start
 ```
 
-5. Your articles will be exported to `articles` folder.
+6. Download the remote images (optional)
 
+```bash
+python download_images.py
+```
+
+p.s. This will make the folder size much bigger if there are a lot of images.
+
+
+## Output Folder
+
+By default, the output folder is `articles`. You can change it in `index.js` file.
 ## Single article export
 
 If you want to export a single article, you can use the `singleWeb.js`. Example:
