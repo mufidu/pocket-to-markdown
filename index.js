@@ -73,7 +73,9 @@ for (const chunk of urlChunks) {
             if (tags[0] !== '') {
                 fileContent += "Tags:";
                 tags.forEach(tag => {
-                    fileContent += " #" + tag;
+                    // Remove whitespace from tag
+                    tag = tag.replace(/\s/g, '');
+                    fileContent += " #article/" + tag;
                 });
                 fileContent += '\n\n';
             }
@@ -110,8 +112,10 @@ for (const chunk of urlChunks) {
                 fs.mkdirSync('articles');
             }
 
-            // Write to file, put file to /articles folder
             // Remove special characters from file name
+            result.title = result.title.replace(/[^a-zA-Z0-9 ]/g, "");
+
+            // Write to file, put file to /articles folder
             fs.writeFileSync('articles/' + result.title + '.md', fileContent);
 
             console.log(result.title + ' parsed!');

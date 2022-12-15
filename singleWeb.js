@@ -22,6 +22,17 @@ Parser.parse(url, { contentType: 'markdown' }).then(result => {
     // Add title to file content
     let fileContent = '# ' + result.title + '\n\n'
 
+    // Add tags if available
+    if (tags[0] !== '') {
+        fileContent += "Tags:";
+        tags.forEach(tag => {
+            // Remove whitespace from tag
+            tag = tag.replace(/\s/g, '');
+            fileContent += " #article/" + tag;
+        });
+        fileContent += '\n\n';
+    }
+
     // Add author if available
     if (result.author) {
         fileContent += result.author + ' | ';
@@ -54,8 +65,10 @@ Parser.parse(url, { contentType: 'markdown' }).then(result => {
         fs.mkdirSync('articles');
     }
 
-    // Write to file, put file to /articles folder
     // Remove special characters from file name
+    result.title = result.title.replace(/[^a-zA-Z0-9 ]/g, "");
+    
+    // Write to file, put file to /articles folder
     fs.writeFileSync('articles/' + result.title + '.md', fileContent);
     console.log(result.title + ' parsed!');
     

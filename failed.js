@@ -37,7 +37,9 @@ for (const [url, tags] of Object.entries(urls)) {
         if (tags[0] !== '') {
             fileContent += "Tags:";
             tags.forEach(tag => {
-                fileContent += " #" + tag;
+                // Remove whitespace from tag
+                tag = tag.replace(/\s/g, '');
+                fileContent += " #article/" + tag;
             });
             fileContent += '\n\n';
         }
@@ -73,9 +75,11 @@ for (const [url, tags] of Object.entries(urls)) {
         if (!fs.existsSync('articles')) {
             fs.mkdirSync('articles');
         }
+        
+        // Remove special characters from file name
+        result.title = result.title.replace(/[^a-zA-Z0-9 ]/g, "");
 
         // Write to file, put file to /articles folder
-        // Remove special characters from file name
         fs.writeFileSync('articles/' + result.title + '.md', fileContent);
 
         console.log(result.title + ' parsed!');
@@ -87,4 +91,4 @@ for (const [url, tags] of Object.entries(urls)) {
 }
 
 // Write failed dictionary to file failed.txt
-fs.writeFileSync('failed.txt', JSON.stringify(failed));
+fs.writeFileSync('failed.txt', JSON.stringify(failed, null, 4));
