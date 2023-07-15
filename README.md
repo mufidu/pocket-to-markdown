@@ -1,6 +1,6 @@
 # Pocket to Markdown
 
-This NPM package helps you to export Pocket articles to Markdown format using [Postlight Parser](https://github.com/postlight/parser/).
+This NPM package helps you to export Pocket articles to Markdown format using [Postlight Parser](https://github.com/postlight/parser/). I personally use this for importing to [Obsidian](https://obsidian.md).
 
 Output example can be found [here](https://github.com/mufidu/pocket-to-markdown/blob/master/articles/Your%20Pocket%20journey%20starts%20now.%20Make%20the%20most%20of%20it..md).
 
