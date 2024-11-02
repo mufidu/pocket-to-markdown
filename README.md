@@ -35,6 +35,7 @@ python download_images.py
 ```
 
 p.s. This will make the folder size much bigger if there are a lot of images.
+Update: Use [this package](https://github.com/mufidu/markdown-image-downloader) to download the images.
 
 
 ## Output Folder
