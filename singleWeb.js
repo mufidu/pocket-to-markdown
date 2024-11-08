@@ -22,17 +22,6 @@ Parser.parse(url, { contentType: 'markdown' }).then(result => {
     // Add title to file content
     let fileContent = '# ' + result.title + '\n\n'
 
-    // Add tags if available
-    if (tags[0] !== '') {
-        fileContent += "Tags:";
-        tags.forEach(tag => {
-            // Remove whitespace from tag
-            tag = tag.replace(/\s/g, '');
-            fileContent += " #article/" + tag;
-        });
-        fileContent += '\n\n';
-    }
-
     // Add author if available
     if (result.author) {
         fileContent += result.author + ' | ';

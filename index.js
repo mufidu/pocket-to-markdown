@@ -9,11 +9,9 @@ fs.rm('articles', { recursive: true }, (err) => {
 });
 
 // Remove failed.txt file
-fs.unlink('failed.txt', (err) => {
-    if (err) {
-        throw err;
-    }
-});
+if (fs.existsSync('failed.txt')) {
+    fs.unlinkSync('failed.txt');
+}
 
 // Get urls from file ril_export.html
 const urlFile = fs.readFileSync('ril_export.html', 'utf8').split('\n');
